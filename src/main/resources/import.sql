@@ -1,0 +1,60 @@
+--insert into empleados (nombre, apellidos) values ('Irene', 'Figuereo');
+--insert into empleados (nombre, apellidos) values ('Carlos', 'Garcia');
+--insert into empleados (nombre, apellidos) values ('Javier', 'Martin');
+--insert into empleados (nombre, apellidos) values ('Daniel', 'Deniz');
+--insert into empleados (nombre, apellidos) values ('Paula', 'Gonzalez');
+--insert into empleados (nombre, apellidos) values ('Laura', 'Trujillo');
+--insert into empleados (nombre, apellidos) values ('Ginger', 'Saenz');
+--
+--insert into usuarios (email, nombre, contrasena, empleado_id) values ('irene@correo.com', 'Irenita23', 1234, 1);
+--insert into usuarios (email, nombre, contrasena, empleado_id) values ('carlos@correo.com', 'cArLiToS', 1234, 2);
+--insert into usuarios (email, nombre, contrasena, empleado_id) values ('javier@correo.com', 'OriginalUserName', 1234, 3);
+--insert into usuarios (email, nombre, contrasena, empleado_id) values ('daniel@correo.com', 'dandan', 1234, 4);
+--insert into usuarios (email, nombre, contrasena, empleado_id) values ('paula@correo.com', 'Paula1995', 1234, 5);
+--insert into usuarios (email, nombre, contrasena, empleado_id) values ('laura@correo.com', 'Lorisss', 1234, 6);
+--insert into usuarios (email, nombre, contrasena, empleado_id) values ('ginger@correo.com', 'Gengibre', 1234, 7);
+--
+--insert into roles (rol) values ('ADMIN');
+--insert into roles (rol) values ('EMPLEADO');
+--
+--insert into usuario_rol (usuario_id, rol_id) values(1,1);
+--insert into usuario_rol (usuario_id, rol_id) values(1,2);
+--insert into usuario_rol (usuario_id, rol_id) values(2,2);
+--insert into usuario_rol (usuario_id, rol_id) values(3,2);
+--insert into usuario_rol (usuario_id, rol_id) values(4,2);
+--insert into usuario_rol (usuario_id, rol_id) values(5,2);
+--insert into usuario_rol (usuario_id, rol_id) values(6,2);
+--insert into usuario_rol (usuario_id, rol_id) values(7,2);
+--
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(4, '2023-06-20', 1)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(5, '2022-06-01', 2)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(4, '2022-12-15', 2)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(4, '2023-06-21', 2)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(4, '2021-12-20', 3)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(5, '2022-06-02', 3)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(6, '2022-12-16', 3)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(5, '2023-06-22', 3)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(3, '2023-06-23', 4)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(4, '2023-06-24', 5)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(4, '2023-06-25', 6)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(4, '2021-06-18', 7)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(4, '2021-12-26', 7)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(5, '2022-06-04', 7)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(6, '2022-12-19', 7)
+--insert into evaluaciones (nota, fecha_creacion, id_empleado) values(5, '2023-06-29', 7)
+--
+--insert into proyectos (nombre, descripcion) values('Altea', 'Aplicación de trading de energía para que los operadores de energía resuelvan los nuevos desafíos derivados de la transformación del mercado eléctrico.')
+--insert into proyectos (nombre, descripcion) values('Mantenimiento', 'Mantenimiento de la aplicación.')
+--insert into proyectos (nombre, descripcion) values('Soporte', 'Ofrecer soporte de la aplicación al cliente.')
+--insert into proyectos (nombre, descripcion) values('FENTEC', 'Desarrollo de nuevos sistemas de encriptación funcionales capaces de ofrecer máxima confianza en los servicios de tecnología de la información europeos.')
+--insert into proyectos (nombre, descripcion) values('SUNRISE', 'Desarrollo de estrategias y tecnologías eficaces que garanticen la resistencia de servicios vitales en escenarios como pandemias y otros desastres..')
+--
+--insert into empleado_proyecto (empleado_id, proyecto_id) values(1,4);
+--insert into empleado_proyecto (empleado_id, proyecto_id) values(2,1);
+--insert into empleado_proyecto (empleado_id, proyecto_id) values(3,1);
+--insert into empleado_proyecto (empleado_id, proyecto_id) values(4,4);
+--insert into empleado_proyecto (empleado_id, proyecto_id) values(5,2);
+--insert into empleado_proyecto (empleado_id, proyecto_id) values(6,3);
+--insert into empleado_proyecto (empleado_id, proyecto_id) values(7,5);
+--
+--
