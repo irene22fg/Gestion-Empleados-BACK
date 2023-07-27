@@ -6,6 +6,7 @@ import com.eviden.gestionempleados.service.EvaluacionService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,6 +21,7 @@ public class EvaluacionController {
     private EvaluacionService evaluacionService;
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Evaluacion>> findAll() {
         try {
             List<Evaluacion> empleados = evaluacionService.findAll();
@@ -33,6 +35,7 @@ public class EvaluacionController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Evaluacion> create(@RequestBody EvaluacionRequest evaluacionRequest) {
         try {
             Evaluacion evaluacion = evaluacionService.create(evaluacionRequest);
@@ -44,6 +47,7 @@ public class EvaluacionController {
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Evaluacion> findById(@PathVariable Long id) {
         try {
             Evaluacion evaluacion = evaluacionService.findById(id);
@@ -57,6 +61,7 @@ public class EvaluacionController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Evaluacion> update(@PathVariable Long id, @RequestBody EvaluacionRequest evaluacionRequest) {
         try {
             Evaluacion evaluacion = evaluacionService.update(id, evaluacionRequest);
@@ -70,6 +75,7 @@ public class EvaluacionController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
             Evaluacion evaluacion = evaluacionService.findById(id);

@@ -6,6 +6,7 @@ import com.eviden.gestionempleados.service.ProyectoService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -20,6 +21,7 @@ public class ProyectoController {
     private ProyectoService proyectoService;
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Proyecto>> findAll() {
         try {
             List<Proyecto> empleados = proyectoService.findAll();
@@ -33,6 +35,7 @@ public class ProyectoController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Proyecto> create(@RequestBody ProyectoRequest proyectoRequest) {
         try {
             Proyecto proyecto = proyectoService.create(proyectoRequest);
@@ -44,6 +47,7 @@ public class ProyectoController {
 
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Proyecto> findById(@PathVariable Long id) {
         try {
             Proyecto proyecto = proyectoService.findById(id);
@@ -57,6 +61,7 @@ public class ProyectoController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Proyecto> update(@PathVariable Long id, @RequestBody ProyectoRequest proyectoRequest) {
         try {
             Proyecto proyecto = proyectoService.update(id, proyectoRequest);
@@ -70,6 +75,7 @@ public class ProyectoController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
             Proyecto proyecto = proyectoService.findById(id);

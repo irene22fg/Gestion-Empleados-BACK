@@ -5,6 +5,7 @@ import com.eviden.gestionempleados.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.server.ResponseStatusException;
 
@@ -19,6 +20,7 @@ public class UsuarioController {
     private UsuarioService usuarioService;
 
     @GetMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<List<Usuario>> findAll() {
         try {
             List<Usuario> usuarios = usuarioService.findAll();
@@ -32,6 +34,7 @@ public class UsuarioController {
     }
 
     @PostMapping
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Usuario> create(@RequestBody Usuario usuario) {
         try {
             Usuario nuevoUsuario = usuarioService.save(usuario);
@@ -42,6 +45,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Usuario> findById(@PathVariable Long id) {
         try {
             Usuario usuario = usuarioService.findById(id);
@@ -55,6 +59,7 @@ public class UsuarioController {
     }
 
     @PutMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario usuario) {
         try {
             Usuario usuarioExistente = usuarioService.findById(id);
@@ -74,6 +79,7 @@ public class UsuarioController {
     }
 
     @DeleteMapping("/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
     public ResponseEntity<?> delete(@PathVariable Long id) {
         try {
             Usuario usuario = usuarioService.findById(id);
