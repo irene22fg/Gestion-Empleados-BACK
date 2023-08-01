@@ -1,6 +1,7 @@
 package com.eviden.gestionempleados.controller;
 
 import com.eviden.gestionempleados.model.Usuario;
+import com.eviden.gestionempleados.reposiroty.UsuarioRepository;
 import com.eviden.gestionempleados.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -18,6 +19,9 @@ public class UsuarioController {
 
     @Autowired
     private UsuarioService usuarioService;
+
+    @Autowired
+    private UsuarioRepository usuarioRepository;
 
     @GetMapping
     @PreAuthorize("hasRole('ADMIN')")
@@ -49,6 +53,20 @@ public class UsuarioController {
     public ResponseEntity<Usuario> findById(@PathVariable Long id) {
         try {
             Usuario usuario = usuarioService.findById(id);
+            if (usuario == null) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
+            }
+            return ResponseEntity.ok(usuario);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al obtener el usuario", e);
+        }
+    }
+
+    @GetMapping("/nombre/{nombre}")
+    @PreAuthorize("hasRole('ADMIN') or hasRole('EMPLEADO')")
+    public ResponseEntity<Usuario> findByNombre(@PathVariable String nombre) {
+        try {
+            Usuario usuario = usuarioRepository.findByNombre(nombre);
             if (usuario == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
             }
