@@ -30,7 +30,6 @@ public class Empleado implements Serializable {
     @JsonIgnore
     private Usuario usuario;
     @OneToMany(fetch = FetchType.LAZY, mappedBy = "empleado", cascade = CascadeType.ALL)
-    //@JsonIgnore
     private List<Evaluacion> evaluaciones;
     @ManyToMany
     @JoinTable(name = "empleado_proyecto",

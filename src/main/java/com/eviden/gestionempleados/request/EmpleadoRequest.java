@@ -6,7 +6,7 @@ public class EmpleadoRequest {
 
     private String nombre;
     private String apellidos;
-    private List<Long> proyectosIds;
+    //private List<Long> proyectosIds;
 
     public String getNombre() {
         return nombre;
@@ -24,11 +24,11 @@ public class EmpleadoRequest {
         this.apellidos = apellidos;
     }
 
-    public List<Long> getProyectosIds() {
-        return proyectosIds;
-    }
-
-    public void setProyectosIds(List<Long> proyectosIds) {
-        this.proyectosIds = proyectosIds;
-    }
+//    public List<Long> getProyectosIds() {
+//        return proyectosIds;
+//    }
+//
+//    public void setProyectosIds(List<Long> proyectosIds) {
+//        this.proyectosIds = proyectosIds;
+//    }
 }

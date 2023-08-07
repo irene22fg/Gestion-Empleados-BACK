@@ -6,7 +6,7 @@ public class EvaluacionRequest {
 
     private int nota;
     private Long empleadoId;
-    private Date createAt;
+    //private Date createAt;
 
     public int getNota() {
         return nota;
@@ -24,12 +24,12 @@ public class EvaluacionRequest {
         this.empleadoId = empleadoId;
     }
 
-    public Date getCreateAt() {
-        return createAt;
-    }
-
-    public void setCreateAt(Date createAt) {
-        this.createAt = createAt;
-    }
+//    public Date getCreateAt() {
+//        return createAt;
+//    }
+//
+//    public void setCreateAt(Date createAt) {
+//        this.createAt = createAt;
+//    }
 
 }

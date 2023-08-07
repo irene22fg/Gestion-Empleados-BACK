@@ -42,9 +42,9 @@ public class EvaluacionService {
         evaluacion.setEmpleado(empleadoRepository.findById(evaluacionRequest.getEmpleadoId())
                 .orElseThrow(() -> new ChangeSetPersister.NotFoundException()));
 
-        Date createAt = evaluacionRequest.getCreateAt();
-        if(createAt != null)
-        evaluacion.setCreateAt(evaluacionRequest.getCreateAt());
+//        Date createAt = evaluacionRequest.getCreateAt();
+//        if(createAt != null)
+//        evaluacion.setCreateAt(evaluacionRequest.getCreateAt());
 
         return evaluacionRepository.save(evaluacion);
     }

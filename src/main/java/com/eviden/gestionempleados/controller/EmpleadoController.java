@@ -1,6 +1,7 @@
 package com.eviden.gestionempleados.controller;
 
 import com.eviden.gestionempleados.model.Empleado;
+import com.eviden.gestionempleados.request.EmpleadoEditRequest;
 import com.eviden.gestionempleados.request.EmpleadoRequest;
 import com.eviden.gestionempleados.service.EmpleadoService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -62,9 +63,9 @@ public class EmpleadoController {
 
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Empleado> update(@PathVariable Long id, @RequestBody EmpleadoRequest empleadoRequest) {
+    public ResponseEntity<Empleado> update(@PathVariable Long id, @RequestBody EmpleadoEditRequest empleadoEditRequest) {
         try {
-            Empleado empleadoExistente = empleadoService.update(id, empleadoRequest);
+            Empleado empleadoExistente = empleadoService.update(id, empleadoEditRequest);
             if (empleadoExistente == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Empleado no encontrado");
             }
