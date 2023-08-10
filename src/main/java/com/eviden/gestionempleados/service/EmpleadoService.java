@@ -64,12 +64,10 @@ public class EmpleadoService{
 
         String nombre = empleadoRequest.getNombre();
         String apellidos = empleadoRequest.getApellidos();
-        //List<Proyecto> proyectos = (List<Proyecto>) proyectoRepository.findAllById(empleadoRequest.getProyectosIds());
 
         Empleado empleado = new Empleado();
         empleado.setNombre(nombre);
         empleado.setApellidos(apellidos);
-        //empleado.setProyectos(proyectos);
 
         return empleadoRepository.save(empleado);
     }

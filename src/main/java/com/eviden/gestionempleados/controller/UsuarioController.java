@@ -2,6 +2,7 @@ package com.eviden.gestionempleados.controller;
 
 import com.eviden.gestionempleados.model.Usuario;
 import com.eviden.gestionempleados.reposiroty.UsuarioRepository;
+import com.eviden.gestionempleados.request.UsuarioRequest;
 import com.eviden.gestionempleados.service.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -39,9 +40,9 @@ public class UsuarioController {
 
     @PostMapping
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Usuario> create(@RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> create(@RequestBody UsuarioRequest usuarioRequest) {
         try {
-            Usuario nuevoUsuario = usuarioService.save(usuario);
+            Usuario nuevoUsuario = usuarioService.create(usuarioRequest);
             return ResponseEntity.status(HttpStatus.CREATED).body(nuevoUsuario);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al crear el usuario", e);
@@ -76,20 +77,28 @@ public class UsuarioController {
         }
     }
 
+    @GetMapping("/empleado/{id}")
+    @PreAuthorize("hasRole('ADMIN')")
+    public ResponseEntity<Usuario> findByEmpleadoId(@PathVariable Long id) {
+        try {
+            Usuario usuario = usuarioRepository.findByEmpleadoId(id);
+            if (usuario == null) {
+                throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
+            }
+            return ResponseEntity.ok(usuario);
+        } catch (Exception e) {
+            throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al obtener el usuario", e);
+        }
+    }
+
     @PutMapping("/{id}")
     @PreAuthorize("hasRole('ADMIN')")
-    public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody Usuario usuario) {
+    public ResponseEntity<Usuario> update(@PathVariable Long id, @RequestBody UsuarioRequest usuarioRequest) {
         try {
-            Usuario usuarioExistente = usuarioService.findById(id);
+            Usuario usuarioExistente = usuarioService.update(id, usuarioRequest);
             if (usuarioExistente == null) {
                 throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Usuario no encontrado");
             }
-            usuarioExistente.setNombre(usuario.getNombre());
-            usuarioExistente.setEmail(usuario.getEmail());
-            usuarioExistente.setContrasena(usuario.getContrasena());
-            usuarioExistente.setEmpleado(usuario.getEmpleado());
-            usuarioExistente.setRoles(usuario.getRoles());
-            usuarioService.save(usuarioExistente);
             return ResponseEntity.ok(usuarioExistente);
         } catch (Exception e) {
             throw new ResponseStatusException(HttpStatus.INTERNAL_SERVER_ERROR, "Error al actualizar el usuario", e);

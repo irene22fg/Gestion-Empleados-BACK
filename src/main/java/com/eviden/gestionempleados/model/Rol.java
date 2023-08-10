@@ -24,13 +24,6 @@ public class Rol implements Serializable {
     @Enumerated(EnumType.STRING)
     private ERol rol;
 
-//    @ManyToMany(mappedBy = "roles")
-//    @JsonIgnore
-//    private List<Usuario> usuarios;
-
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.LAZY,mappedBy = "rol")
-//    private Set<UsuarioRol> usuarioRoles = new HashSet<>();
-
     public Long getId() {
         return id;
     }

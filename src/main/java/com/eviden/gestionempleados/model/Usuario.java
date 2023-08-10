@@ -1,6 +1,5 @@
 package com.eviden.gestionempleados.model;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotEmpty;
@@ -31,7 +30,6 @@ public class Usuario implements Serializable {
     @Column(nullable=false)
     @NotEmpty
     @Size(min=4)
-    //@Enumerated(EnumType.STRING)
     private String nombre;
     @Column(nullable=false)
     @NotEmpty
@@ -39,11 +37,7 @@ public class Usuario implements Serializable {
     private String contrasena;
     @OneToOne
     @JoinColumn(name = "empleado_id")
-    @JsonIgnore
     private Empleado empleado;
-//    @OneToMany(cascade = CascadeType.ALL,fetch = FetchType.EAGER,mappedBy = "usuario")
-//    @JsonIgnore
-//    private Set<UsuarioRol> usuarioRoles = new HashSet<>();
 
     @ManyToMany(fetch = FetchType.EAGER, targetEntity = Rol.class, cascade = CascadeType.PERSIST)
     @JoinTable(name = "usuario_rol",

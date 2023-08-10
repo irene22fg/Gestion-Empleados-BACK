@@ -1,8 +1,5 @@
 package com.eviden.gestionempleados.request;
 
-import com.eviden.gestionempleados.model.Evaluacion;
-import com.eviden.gestionempleados.model.Proyecto;
-
 import java.util.List;
 
 public class EmpleadoEditRequest {
